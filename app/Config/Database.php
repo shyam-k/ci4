@@ -45,18 +45,18 @@ class Database extends Config
         'numberNative' => false,
     ];
 
-    /**
+     /**
      * This database connection is used when
      * running PHPUnit database tests.
      */
     public array $tests = [
         'DSN'         => '',
-        'hostname'    => '127.0.0.1',
-        'username'    => '',
-        'password'    => '',
-        'database'    => ':memory:',
-        'DBDriver'    => 'SQLite3',
-        'DBPrefix'    => 'db_',  // Needed to ensure we're working correctly with prefixes live. DO NOT REMOVE FOR CI DEVS
+        'hostname'    => 'db',
+        'username'    => 'db',
+        'password'    => 'db',
+        'database'    => 'db',
+        'DBDriver'    => 'MySQLi',
+        'DBPrefix'    => '',  // Needed to ensure we're working correctly with prefixes live. DO NOT REMOVE FOR CI DEVS
         'pConnect'    => false,
         'DBDebug'     => true,
         'charset'     => 'utf8',
@@ -79,7 +79,10 @@ class Database extends Config
         // we are currently running an automated test suite, so that
         // we don't overwrite live data on accident.
         if (ENVIRONMENT === 'testing') {
-            $this->defaultGroup = 'tests';
+            $this->defaultGroup = 'default';
+        }
+        if (ENVIRONMENT === 'development') {
+            $this->defaultGroup = 'default';
         }
     }
 }

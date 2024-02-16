@@ -31,7 +31,7 @@
 #--------------------------------------------------------------------
 
  database.default.hostname = db
- database.default.database = ci4
+ database.default.database = db
  database.default.username = db
  database.default.password = db
  database.default.DBDriver = MySQLi
